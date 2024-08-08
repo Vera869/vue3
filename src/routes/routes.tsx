@@ -8,13 +8,13 @@ const routes = [
       path: '/',
       name: 'home',
       component: MainPage,
-      // children: [
-      //    {
-      //       path: 'task/:id',
-      //       name: 'task',
-      //       componnent: TaskPage,
-      //    }
-      // ]
+      children: [
+         {
+            path: '/task/:id',
+            name: 'task',
+            componnent: TaskPage,
+         }
+      ]
    },
    {
       path: '/about',
