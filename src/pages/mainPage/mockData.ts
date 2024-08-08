@@ -9,19 +9,19 @@ export const taskList: Task[] = [
    {
       id: 1,
       title: 'Задача 1',
-      discription: '123456789',
-      completed: false,
+      discription: 'Создать приложение vue',
+      completed: true,
    },
    {
       id: 2,
       title: 'Задача 2',
-      discription: '0987654321',
-      completed: true,
+      discription: 'Изучить семантику vue',
+      completed: false,
    },
    {
       id: 3,
       title: 'Задача 3',
-      discription: '0192837465',
+      discription: 'Протестировать приложение',
       completed: false,
    }
 ]

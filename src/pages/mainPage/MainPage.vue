@@ -1,19 +1,39 @@
 <script setup lang="ts">
+import './MainPage.css'
 import {ref} from 'vue';
-import { Task, taskList } from './mockData.ts';
+import { type Task, taskList } from './mockData';
 import AddTaskForm from './components/addTaskComponent/AddTaskForm.vue';
 
 const tasks: Task[] = ref(taskList);
+const errorMessage: string = "Пожалуйста, укажите название задачи и описание задачи";
+let errorState: boolean = ref(false);
 
 const onAddTask = (title: string, discription: string) => {
    const newTask: Task = {
-      id: tasks.value.length + 1,
+      id: tasks.value.length + 2,
       title: title,
       discription: discription,
       completed: false,
    };
-   tasks.value = [...tasks.value, newTask];
+   if(!title || !discription) {
+      errorState.value = true;
+      console.log(errorState.value);
+   } else {
+      tasks.value = [...tasks.value, newTask];
+   }
 }
+
+const deleteTaskHandle = (id: number) => {
+   tasks.value = tasks.value.filter(el => el.id !== id);
+}
+
+const toggleCompleted = (id: number) => {
+   const index = tasks.value.findIndex(el => el.id === id);
+   const taskById = tasks.value[index];
+
+   tasks.value[index] = {...taskById, completed: !taskById.completed};
+}
+
 </script>
 
 <template>
@@ -21,33 +41,22 @@ const onAddTask = (title: string, discription: string) => {
       <h1 class="main_header">Список задач</h1>
       <div class="main_tasks">
          <ul class="tasks">
-            <li class="tasks_title" v-for="task in tasks" v-bind:key="task.id">{{ task.title }}
-               <p class="tasks_discript">{{ task.discription }}</p>
+            <li class="task" 
+               v-for="task in tasks" 
+               v-bind:key="task.id">
+               <div class="task_heder">
+                  <input class="task_checkbox" 
+                        @click="() => toggleCompleted(task.id)" 
+                        :checked="task.completed" 
+                        type="checkbox"/>
+                  <p class="task_title">{{ task.title }}</p>
+                  <span class="task-delete" @click="() => deleteTaskHandle(task.id)" >X</span>
+               </div>
+               <p class="task_discript">{{ task.discription }}</p>
             </li>
          </ul>
       </div>
       <AddTaskForm :onAddTask="onAddTask" />
+      <p :class="{task_error: true, task_error_active: errorState.value===true}">{{errorMessage}}</p>
    </div>
 </template>
-
-<style scoped>
-.main {
-   width: 70vw;
-   background: hsla(52, 90%, 51%, 0.5) ;
-   color: darkgreen;
-   border: 2px solid green;
-   border-radius: 20px;
-   padding: 20px 40px;
-   display: block;
-}
-.main_tasks {
-   width: 40vw;
-   height: auto;
-}
-.tasks_title, .tasks_discript {
-  width: 60vw;
-  padding: 3px;
-  word-wrap: break-word;
-}
-
-</style>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {ref} from 'vue';
+import './form.css';
 
 const props = defineProps<{
    onAddTask:(taskTitle: string) => void;
@@ -23,6 +24,7 @@ const addTaskHendle = () => {
    inputTitle.value = "";
    inputDiscription.value = "";
 }
+
 </script>
 
 <template>
@@ -39,47 +41,6 @@ const addTaskHendle = () => {
          placeholder="описание задачи" 
          :value="inputDiscription" 
       />
-      <button @click="addTaskHendle" class="form_button">Добавить</button>
+      <button class="form_button" @click="addTaskHendle" >Добавить</button>
    </div>
 </template>
-
-<style scoped>
-.form {
-   display: flex;
-   flex-direction: column;
-   gap: 12px;
-   margin: 20px;
-}
-.form_input {
-   width: 30vw;
-   height: 3vw;
-   outline:none;
-   border: none;
-   border-radius: 20px;
-   border-bottom: 2px solid green;
-   background: hsla(52, 90%, 51%, 0.5);
-   color: green;
-   padding: 1rem;
-   &:action, hover, focus {
-      border-color: green;
-   }
-}
-.form_button {
-   width: 20vw;
-   height: auto;
-   outline:none;
-   border: none;
-   border: 2px solid green;
-   border-radius: 20px;
-   background: hsla(52, 90%, 51%, 0.5);
-   color: green;
-   padding: 1rem;
-   &:hover {
-      background: greenyellow;
-   }
-   &:active {
-      background:green;
-   }
-}
-
-</style>

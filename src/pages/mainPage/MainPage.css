@@ -1,0 +1,48 @@
+.main {
+   width: 70vw;
+   background: hsla(52, 90%, 51%, 0.5) ;
+   color: darkgreen;
+   border: 2px solid green;
+   border-radius: 20px;
+   padding: 20px 40px;
+   display: block;
+}
+.main_header {
+   font-weight: bold;
+   margin-bottom: 20px;
+}
+.main_tasks {
+   width: 40vw;
+   height: auto;
+}
+.task_heder {
+   display: flex;
+   gap: 14px;
+
+}
+.task_title, .task_discript {
+  width: 60vw;
+  padding: 3px;
+  word-wrap: break-word;
+}
+.task_title {
+   font-weight: bold;
+}
+.task-delete {
+   font-weight: bold;
+   color: red;
+   cursor: pointer;
+}
+.task_error {
+   /* content-visibility: hidden; */
+   display: none;
+}
+.task_error_active {
+   display: contents;
+   width: 60vw;
+   min-height: 24px;
+   padding: 3px;
+   word-wrap: break-word;
+   font-weight: bold;
+   color: red;
+}
