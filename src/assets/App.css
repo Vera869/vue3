@@ -1,0 +1,40 @@
+.header{
+   width: 100%;
+   background-color:  hsla(52, 90%, 51%, 0.5);
+   border: 2px solid green;
+   border-radius: 20px;
+   padding: 30px;
+   margin-bottom: 10px;
+}
+.header_nav{
+   display: flex;
+   /* flex-direction: column; */
+}
+.header_nav-link{
+   padding: 5px;
+   border-radius: 20px;
+   color:green;
+   font-weight: bold;
+   &:hover {
+      color: darkolivegreen;
+      text-decoration: underline;
+   }
+   &:active{
+      color: grey;
+   }
+}
+.footer{
+   width: 100%;
+   background-color:  hsla(52, 90%, 51%, 0.5);
+   border: 2px solid green;
+   border-radius: 20px;
+   padding: 30px;
+   margin-top: 10px;
+
+}
+.footer_message{
+   display: flex;
+   color: green;
+   font-weight: bold;
+   justify-content: center;
+}

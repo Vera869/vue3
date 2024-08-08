@@ -49,12 +49,16 @@ const toggleCompleted = (id: number) => {
                         @click="() => toggleCompleted(task.id)" 
                         :checked="task.completed" 
                         type="checkbox"/>
-                  <p class="task_title">{{ task.title }}</p>
+                  <p class="task_title">
+                     <RouterLink :to="`/task/${task.id}`"> {{ task.title }} </RouterLink>
+                  </p>
                   <span class="task-delete" @click="() => deleteTaskHandle(task.id)" >X</span>
+
                </div>
                <p class="task_discript">{{ task.discription }}</p>
             </li>
          </ul>
+         <RouterView />
       </div>
       <AddTaskForm :onAddTask="onAddTask" />
       <p :class="{task_error: true, task_error_active: errorState.value===true}">{{errorMessage}}</p>
